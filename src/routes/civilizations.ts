@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/", CivilizationController.getCivs);
 
+router.get("/:civId", CivilizationController.getCiv);
+
 export default router;

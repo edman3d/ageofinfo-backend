@@ -14,3 +14,23 @@ export const getCivs: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getCiv: RequestHandler = async (req, res, next) => {
+  const civId = req.params.civId;
+
+  try {
+    if (!mongoose.isValidObjectId(civId)) {
+      throw createHttpError(400, "Invalid civ id");
+    }
+
+    const civ = await CivilizationModel.findById(civId).exec();
+
+    if (!civ) {
+      throw createHttpError(404, "Civilization not found");
+    }
+
+    res.status(200).json(civ);
+  } catch (error) {
+    next(error);
+  }
+};
