@@ -6,7 +6,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getUnits: RequestHandler = async (req, res, next) => {
   try {
-    const units = await UnitModel.find().exec();
+    const units = await UnitModel.find();
     res.status(200).json(units);
   } catch (error) {
     next(error);

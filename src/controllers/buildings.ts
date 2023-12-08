@@ -6,7 +6,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getBuildings: RequestHandler = async (req, res, next) => {
   try {
-    const buildings = await BuildingModel.find().exec();
+    const buildings = await BuildingModel.find();
     res.status(200).json(buildings);
   } catch (error) {
     next(error);

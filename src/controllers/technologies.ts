@@ -6,7 +6,7 @@ import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getTechnologies: RequestHandler = async (req, res, next) => {
   try {
-    const techs = await TechnologyModel.find().exec();
+    const techs = await TechnologyModel.find();
     res.status(200).json(techs);
   } catch (error) {
     next(error);
